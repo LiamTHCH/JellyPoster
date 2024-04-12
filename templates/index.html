@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Image Dynamique</title>
+        <script>
+            function refreshImage() {
+                var img = document.getElementById('dynamic-image');
+                img.src = img.src.split('?')[0] + '?' + new Date().getTime(); // Ajoute une chaîne de requête pour éviter le cache
+            }
+            setInterval(refreshImage, 5000); // Actualise l'image toutes les 5 secondes
+        </script>
+      <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .fullscreen-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+    </head>
+    <body>
+        <img class="fullscreen-image" id="dynamic-image" src="{{ url }}" alt="Image dynamique">
+    </body>
+</html>
