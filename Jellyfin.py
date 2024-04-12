@@ -30,42 +30,41 @@ class JellyFin:
                         print('Client Playing a TV Episode')
 
                         #Setup Variable
-                        jellyfin_episode_name = playing_device['NowPlayingItem']['SeriesName']
-                        jellyfin_episode_id = playing_device['NowPlayingItem']['SeriesId']
-                        jellyfin_episode_overview = playing_device['NowPlayingItem']['Overview']
-
+                        jellyfin_episode_name = playing_device['NowPlayingItem'].get('SeriesName', None)
+                        jellyfin_episode_id = playing_device['NowPlayingItem'].get('SeriesId', None)
+                        jellyfin_episode_overview = playing_device['NowPlayingItem'].get('Overview', None)
                         jellyfin_playback_poster = (f'{self.jellyfin_url}/items/{jellyfin_episode_id}/Images/Primary')
 
                         
 
-                        return jellyfin_episode_name,jellyfin_episode_overview,jellyfin_playback_poster
+                        return jellyfin_episode_name,jellyfin_episode_id,jellyfin_episode_overview,jellyfin_playback_poster
 
                     #Movie Display
                     if (jellyfin_playback_type == 'Movie'):
                         print('Client Playing a Movie')
 
                         #Setup Variable
-                        jellyfin_movie_id = playing_device['NowPlayingItem']['Id']
-                        jellyfin_movie_name = playing_device['NowPlayingItem']['Name']
-                        jellyfin_movie_overview = playing_device['NowPlayingItem']['Overview']
+                        jellyfin_movie_id = playing_device['NowPlayingItem'].get('Id', None)
+                        jellyfin_movie_name = playing_device['NowPlayingItem'].get('Name', None)
+                        jellyfin_movie_overview = playing_device['NowPlayingItem'].get('Overview', None)
 
                         jellyfin_playback_poster = (f'{self.jellyfin_url}/items/{jellyfin_movie_id}/Images/Primary')
 
 
-                        return jellyfin_movie_name, jellyfin_playback_poster
+                        return jellyfin_movie_id,jellyfin_movie_name, jellyfin_playback_poster
 
                     #TV Channel Display
                     if (jellyfin_playback_type == 'TvChannel'):
                         print('Client Playing a Live TV')
 
                         #Setup Variable
-                        jellyfin_channel_id = playing_device['NowPlayingItem']['Id']
-                        jellyfin_channel_name = playing_device['NowPlayingItem']['Name']
-                        jellyfin_channel_number = playing_device['NowPlayingItem']['ChannelNumber']
-                        jellyfin_channel_program_title = playing_device['NowPlayingItem']['CurrentProgram']['EpisodeTitle']
+                        jellyfin_channel_id = playing_device['NowPlayingItem'].get('Id', None)
+                        jellyfin_channel_name = playing_device['NowPlayingItem'].get('Name', None)
+                        jellyfin_channel_number = playing_device['NowPlayingItem'].get('ChannelNumber', None)
+                        jellyfin_channel_program_title = playing_device['NowPlayingItem']['CurrentProgram'].get('EpisodeTitle', None)
 
-                        jellyfin_playback_poster = (f'{jellyfin_url}/items/{jellyfin_channel_id}/Images/Primary')
+                        jellyfin_playback_poster = (f'{self.jellyfin_url}/items/{jellyfin_channel_id}/Images/Primary')
 
-                        return jellyfin_channel_name, jellyfin_channel_program_title
+                        return jellyfin_channel_id, jellyfin_channel_name, jellyfin_channel_number, jellyfin_channel_program_title, jellyfin_playback_poster
 
 
