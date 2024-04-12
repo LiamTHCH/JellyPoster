@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="refresh" content="60" /> 
         <title>JellyPoster</title>
         <script>
             function refreshImage() {
                 var img = document.getElementById('dynamic-image');
-                img.src = img.src.split('?')[0] + '?' + new Date().getTime(); // Ajoute une chaîne de requête pour éviter le cache
+                img.src = img.src.split('?')[0] + '?' + new Date().getTime(); 
             }
-            setInterval(refreshImage, 5000); // Actualise l'image toutes les 5 secondes
+            setInterval(refreshImage, 5000); 
         </script>
       <style>
         body, html {
