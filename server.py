@@ -5,7 +5,7 @@ import os
 
 
 Jelly = JellyFin(os.environ.get("JELLYFIN_URL"), os.environ.get("JELLYFIN_API_KEY"))
-clientip = os.environ.get("CLIENT_IP")
+clientip = os.environ.get("CLIENT_IP") # IP of the device that is playing the media
 
 
 app = Flask(__name__)
