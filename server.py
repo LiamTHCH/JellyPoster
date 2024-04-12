@@ -5,8 +5,6 @@ import os
 
 
 Jelly = JellyFin(os.environ.get("JELLYFIN_URL"), os.environ.get("JELLYFIN_API_KEY"))
-
-print(Jelly.get_PLAYING_device("89.247.8.169"))
 clientip = os.environ.get("CLIENT_IP")
 
 
