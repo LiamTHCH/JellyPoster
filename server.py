@@ -4,19 +4,19 @@ from Jellyfin import JellyFin
 import os
 
 
-Chehtelekoum = JellyFin(os.environ.get("JELLYFIN_URL"), os.environ.get("JELLYFIN_API_KEY"))
+Jelly = JellyFin(os.environ.get("JELLYFIN_URL"), os.environ.get("JELLYFIN_API_KEY"))
 
-print(Chehtelekoum.get_PLAYING_device("89.247.8.169"))
-
+print(Jelly.get_PLAYING_device("89.247.8.169"))
+clientip = os.environ.get("CLIENT_IP")
 
 
 app = Flask(__name__)
 
-# Fonction qui retourne l'URL de l'image
+
 def get_image_url():
     image = ""
-    if (Chehtelekoum.get_PLAYING_device("89.247.8.169")) is not None:
-        image = Chehtelekoum.get_PLAYING_device("89.247.8.169")[-1]
+    if (Jelly.get_PLAYING_device(clientip)) is not None:
+        image = Jelly.get_PLAYING_device(clientip)[-1]
     else:
         image = "https://static-00.iconduck.com/assets.00/jellyfin-icon-1024x1024-udvadsvh.png"
     return image
