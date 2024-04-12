@@ -37,8 +37,8 @@ CLIENT_IP="your_client_ip"
 Modify the CLIENT_IP variable to match the IP address of the device where you want to run the script.
 Run the server script by executing:
 
-bash
+```bash
 
 python server.py
-
+```
 Sit back and enjoy as the program displays the posters of the content being played on your specified devices.
