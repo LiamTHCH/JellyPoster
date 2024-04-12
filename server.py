@@ -1,8 +1,10 @@
 from flask import Flask, render_template
 import time
 from Jellyfin import JellyFin
+import os
 
-Chehtelekoum = JellyFin("https://url","api")
+
+Chehtelekoum = JellyFin(os.environ.get("JELLYFIN_URL"), os.environ.get("JELLYFIN_API_KEY"))
 
 print(Chehtelekoum.get_PLAYING_device("89.247.8.169"))
 
